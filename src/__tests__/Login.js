@@ -41,7 +41,7 @@ describe("Given that I am a user on login page", () => {
 
       const form = screen.getByTestId("form-employee");
       const handleSubmit = jest.fn((e) => e.preventDefault());
-
+      
       form.addEventListener("submit", handleSubmit);
       fireEvent.submit(form);
       expect(screen.getByTestId("form-employee")).toBeTruthy();
@@ -142,12 +142,12 @@ describe("Given that I am a user on login page", () => {
       document.body.innerHTML = LoginUI();
 
       const inputEmailUser = screen.getByTestId("admin-email-input");
-      fireEvent.change(inputEmailUser, { target: { value: "pasunemail" } });
-      expect(inputEmailUser.value).toBe("pasunemail");
+      fireEvent.change(inputEmailUser, { target: { value: "admin@test.tld" } });
+      expect(inputEmailUser.value).toBe("admin@test.tld");
 
       const inputPasswordUser = screen.getByTestId("admin-password-input");
-      fireEvent.change(inputPasswordUser, { target: { value: "azerty" } });
-      expect(inputPasswordUser.value).toBe("azerty");
+      fireEvent.change(inputPasswordUser, { target: { value: "admin" } });
+      expect(inputPasswordUser.value).toBe("admin");
 
       const form = screen.getByTestId("form-admin");
       const handleSubmit = jest.fn((e) => e.preventDefault());

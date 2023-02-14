@@ -25,15 +25,21 @@ export default class NewBill {
     fileExtension = fileExtension[1]
     const formData = new FormData()
     const email = JSON.parse(localStorage.getItem("user")).email
+    const submitButton = document.getElementById("btn-send-bill")
+
     formData.append('file', file)
     formData.append('email', email)
 
     if (fileExtension != "png" && fileExtension != "jpg" && fileExtension != "jpeg") {
-      //disable submit button
-      //add error message 
+      submitButton.disabled = true
+      const divInput = document.querySelector(`input[data-testid="file"]`)
+      const errorMessage = document.createElement("div")
+      errorMessage.innerText = "Wrong file extension please use PNG,JPEG or JPG"
+      errorMessage.style.color = "red"
+      divInput.after(errorMessage)
     }
     else {
-      //enable submit button
+      submitButton.disabled = false
       this.store
       .bills()
       .create({

@@ -14,6 +14,7 @@ export default class NewBill {
     this.fileName = null
     this.billId = null
     new Logout({ document, localStorage, onNavigate })
+    //disable submit button
   }
   handleChangeFile = e => {
     e.preventDefault()
@@ -27,7 +28,12 @@ export default class NewBill {
     formData.append('file', file)
     formData.append('email', email)
 
-   
+    if (fileExtension != "png" && fileExtension != "jpg" && fileExtension != "jpeg") {
+      //disable submit button
+      //add error message 
+    }
+    else {
+      //enable submit button
       this.store
       .bills()
       .create({
@@ -41,11 +47,9 @@ export default class NewBill {
         this.billId = key
         this.fileUrl = fileUrl
         this.fileName = fileName
-        if (fileExtension != "png" && fileExtension != "jpg" && fileExtension != "jpeg") {
-          throw new Error ("Wrong file extension ")
-        }
+     
       }).catch(error => console.error(error))
-
+    }
   }
 
   handleSubmit = e => {

@@ -32,12 +32,7 @@ export default class NewBill {
 
     if (fileExtension != "png" && fileExtension != "jpg" && fileExtension != "jpeg") {
       submitButton.disabled = true
-      const divInput = document.querySelector(`input[data-testid="file"]`).parentNode
-      const errorMessage = document.createElement("div")
-      errorMessage.setAttribute("id", "errorMessage")
-      errorMessage.innerText = "Wrong file extension please use PNG,JPEG or JPG"
-      errorMessage.style.color = "red"
-      divInput.append(errorMessage)
+      errorMessage.style.display = "block"
     }
     else {
       submitButton.disabled = false

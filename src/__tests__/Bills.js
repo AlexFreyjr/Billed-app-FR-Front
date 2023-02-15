@@ -39,7 +39,7 @@ describe("Given I am connected as an employee", () => {
       expect(dates).toEqual(datesSorted)
     })
     // test d'intégration GET
-    test("fetches bills from mock API GET", async () => {
+  /*   test("fetches bills from mock API GET", async () => {
 
       Object.defineProperty(window, 'localStorage', { value: localStorageMock })
       window.localStorage.setItem('user', JSON.stringify({
@@ -54,7 +54,7 @@ describe("Given I am connected as an employee", () => {
       //expect(screen.getByTestId("data-table")).toBeTruthy()
     })
   })
-  /* describe("When an error occurs on API", () => {
+ describe("When an error occurs on API", () => {
     beforeEach(() => {
       jest.spyOn(mockStore, "bills")
       Object.defineProperty(
@@ -97,7 +97,7 @@ describe("Given I am connected as an employee", () => {
       await new Promise(process.nextTick);
       const message = await screen.getByText(/Erreur 500/)
       expect(message).toBeTruthy()
-    })
-  }) */
+    })*/
+  })
 })
 

@@ -1,7 +1,8 @@
 /**
  * @jest-environment jsdom
  */
-
+import "@testing-library/jest-dom"
+import userEvent from '@testing-library/user-event'
 import {screen, waitFor} from "@testing-library/dom"
 import BillsUI from "../views/BillsUI.js"
 import { bills } from "../fixtures/bills.js"
@@ -25,10 +26,7 @@ describe("Given I am connected as an employee", () => {
       window.onNavigate(ROUTES_PATH.Bills)
       await waitFor(() => screen.getByTestId('icon-window'))
       const windowIcon = screen.getByTestId('icon-window')
-      //find a way to narrow down to the div active
-      //If not then use .toBeDefined() instead ot .toMatch("active-icon")
-      //expect(windowIcon).toContain(`div class="active-icon"`)
-      expect(windowIcon).toBeDefined()
+      expect(windowIcon).toHaveClass("active-icon")
 
     })
     test("Then bills should be ordered from earliest to latest", () => {
@@ -39,7 +37,8 @@ describe("Given I am connected as an employee", () => {
       expect(dates).toEqual(datesSorted)
     })
     // test d'intégration GET
-  /*   test("fetches bills from mock API GET", async () => {
+  
+  test("fetches bills from mock API GET", async () => {
 
       Object.defineProperty(window, 'localStorage', { value: localStorageMock })
       window.localStorage.setItem('user', JSON.stringify({
@@ -78,7 +77,7 @@ describe("Given I am connected as an employee", () => {
             return Promise.reject(new Error("Erreur 404"))
           }
         }})
-      window.onNavigate(ROUTES_PATH.Dashboard)
+      window.onNavigate(ROUTES_PATH.Bills)
       await new Promise(process.nextTick);
       const message = await screen.getByText(/Erreur 404/)
       expect(message).toBeTruthy()
@@ -97,7 +96,7 @@ describe("Given I am connected as an employee", () => {
       await new Promise(process.nextTick);
       const message = await screen.getByText(/Erreur 500/)
       expect(message).toBeTruthy()
-    })*/
+    })
   })
 })
 

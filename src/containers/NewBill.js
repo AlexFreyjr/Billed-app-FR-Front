@@ -34,12 +34,14 @@ export default class NewBill {
       submitButton.disabled = true
       const divInput = document.querySelector(`input[data-testid="file"]`).parentNode
       const errorMessage = document.createElement("div")
+      errorMessage.setAttribute("id", "errorMessage")
       errorMessage.innerText = "Wrong file extension please use PNG,JPEG or JPG"
       errorMessage.style.color = "red"
       divInput.append(errorMessage)
     }
     else {
       submitButton.disabled = false
+      errorMessage.style.display = "none"
       this.store
       .bills()
       .create({

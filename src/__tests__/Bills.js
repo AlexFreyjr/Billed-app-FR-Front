@@ -103,8 +103,8 @@ describe("Given I am connected as an employee", () => {
         userEvent.click(eye);
         expect(handleClickIconEye).toHaveBeenCalled();
 
-        /*         const modal = screen.getByRole("document");
-        expect(modal).toBeTruthy(); */
+        const modal = screen.getByText("Justificatif");
+        expect(modal).toBeTruthy();
       });
     });
   });

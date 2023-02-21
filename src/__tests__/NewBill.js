@@ -15,8 +15,14 @@ describe("Given I am connected as an employee", () => {
       document.body.innerHTML = html
       const expenseList = screen.getByLabelText('Type de dépense').length
       expect(expenseList).toEqual(6)
-    }) */
-    test("Then I should be able to choose input", () => {
+    }) 
+    test("Then the mail icon in vertical layout should be highlighted", () => {
+      const html = NewBillUI()
+      document.body.innerHTML = html
+      const mailIcon = screen.getByTestId('icon-mail')
+      expect(mailIcon).toHaveClass("active-icon")
+    })*/
+    test("Then I should be able to input data", () => {
   
         const html = NewBillUI()
         document.body.innerHTML = html
@@ -27,9 +33,11 @@ describe("Given I am connected as an employee", () => {
         expect(screen.getByTestId('pct')).toBeTruthy()
         expect(screen.getByTestId('commentary')).toBeTruthy()
       })
+
+    it.todo('Should emulate a user using the form')
+    it.todo('Should fill the form with mock data from a JSON file (fake API call)')
+    it.todo('Should test if the newbill icon is highlighted')
     it.todo('Should authorise the upload a file in PNG,JPEG or JPG')
-    it.todo('Should permit the upload if the form is correct')
-    it.todo('Should make a POST test')
   })
 })
 

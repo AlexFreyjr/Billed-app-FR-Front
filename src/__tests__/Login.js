@@ -133,6 +133,7 @@ describe("Given that I am a user on login page", () => {
 
       form.addEventListener("submit", handleSubmit);
       fireEvent.submit(form);
+      //expect .catch to throw an error
       expect(screen.getByTestId("form-admin")).toBeTruthy();
     });
   });
@@ -154,6 +155,7 @@ describe("Given that I am a user on login page", () => {
 
       form.addEventListener("submit", handleSubmit);
       fireEvent.submit(form);
+      //expect .catch to throw an error
       expect(screen.getByTestId("form-admin")).toBeTruthy();
     });
   });
